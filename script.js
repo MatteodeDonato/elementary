@@ -1,4 +1,3 @@
-
 var cvs, ctx;
 var elements = [];
 var elements2 = [];
@@ -16,16 +15,14 @@ function getPosition(event)
       window.location = "http://www.wolframalpha.com/input/?i=atomic+number+" + elements[h].number;
   }
 
-
 }
 
 function init() {
    cvs = document.getElementById("periodicTable");
    cvs.addEventListener("mousedown", getPosition, false);
    ctx = cvs.getContext("2d");
-   ctx.strokeStyle = 'black';
-   ctx.textStyle = 'black';
-   ctx.fillStyle = 'white';
+   ctx.fillStyle = 'black';
+   ctx.strokeStyle = 'white';
    drawImg();
 
 }
@@ -69,11 +66,12 @@ function drawImg() {
   elements = elements2;
 
   for(var x = 0; x < elements.length; x++){
+    ctx.fillStyle = 'black';
     ctx.moveTo(elements[x].posx+20,elements[x].posy);
     ctx.arc(elements[x].posx, elements[x].posy, 20, 0, 2*Math.PI);
     ctx.stroke();
-    ctx.fill();
     ctx.textAlign = "center";
+    ctx.fillStyle = 'white';
     ctx.fillText(elements[x].number,elements[x].posx, elements[x].posy+2.5);
     console.log(elements[x].number);
   }
